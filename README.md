@@ -1,5 +1,5 @@
 # ConkyPi
-ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolutiojn (vertical)
+ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertical)
 
 <b>Requirements</b>
 
