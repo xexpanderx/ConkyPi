@@ -1,0 +1,49 @@
+conky.config = {
+	background = false,
+	update_interval = 1,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 2048,
+	imlib_cache_size = 0,
+
+
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+        --own_window_colour = 'FFFFFF',
+        own_window_argb_value = 255,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+	minimum_width = 900, minimum_height = 1440,
+ 	color1 = 'a7413b',
+  	color2 = '12cbc2',
+  	color3 = 'bec25d',
+  	color4 = 'd8c95c',
+  	color5 = '9ce1e0',
+	alignment = 'top_right',
+	gap_x = 0,
+	gap_y = 0,
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+	use_xft = true,
+	xftalpha = 1.0,
+  	font = 'Dejavu Sans Book:size=8:bold',
+	uppercase = false,
+
+	lua_load = 'settings.lua',
+	lua_draw_hook_pre = 'start_widgets',
+};
+
+conky.text = [[]];
