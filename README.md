@@ -7,7 +7,7 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolutiojn (vertic
 - pyowm
 - w3m
 - openweather api-key
-- Monitor with 900x1440 resolution
+- Monitor with 1440x900 resolution used <b> vertically </b>
 
 <b>Install</b>
 
