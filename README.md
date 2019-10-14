@@ -5,10 +5,10 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertica
 
 <b>Requirements</b>
 
-- Overpass font
+- Overpass font (https://overpassfont.org/)
 - pyowm (https://github.com/csparpa/pyowm)
 - w3m (http://w3m.sourceforge.net/)
-- openweather api-key
+- openweather api-key and membership (https://openweathermap.org/)
 - Monitor with 1440x900 resolution used <b> vertically </b>
 - moreutils (https://joeyh.name/code/moreutils/)
 
