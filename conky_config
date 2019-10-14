@@ -17,7 +17,7 @@ conky.config = {
 	own_window_argb_visual = true,
         --own_window_colour = 'FFFFFF',
         own_window_argb_value = 255,
-	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
 
 	border_inner_margin = 0,
 	border_outer_margin = 0,
