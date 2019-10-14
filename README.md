@@ -1,4 +1,6 @@
 # ConkyPi
+![alt tag](https://github.com/xexpanderx/ConkyPi/blob/master/screenshot.png)
+
 ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertical)
 
 <b>Requirements</b>
