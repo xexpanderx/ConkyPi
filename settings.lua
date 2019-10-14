@@ -156,6 +156,7 @@ function draw_function(cr)
 			--Messages of the day
 				--Get text from file
 			cairo_new_path(cr)
+			conky_parse("${execi 60 fold -w50 " .. text_file .. " | sponge " .. text_file .. "}")
 			local f = assert(io.open(text_file, "rb"))
 			local content = f:read("*all")
 			f:close()
