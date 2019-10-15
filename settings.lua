@@ -3,6 +3,8 @@
 api_key = "13aad301dd37412e01c6c3d4abe0b12e"
 city = "Uppsala"
 country_code = "SE"
+-- ###Device settings###
+device= "[Device]"
 -- ###Colors###
 background_color = "#FFFFFF"
 weather_background_color = "#2E2E2E"
@@ -18,8 +20,9 @@ transparency_weather_text = 1.0
 transparency_temp_text = 1.0
 transparency_circle = 1.0
 --- ###Text file location
-text_file = "/home/alexsson/Dropbox/ConkyPi/conkypi_text.txt"
-directory = "/home/alexsson/Dropbox/ConkyPi/"
+text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/conkypi_text.txt"
+hidden_text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/.tmp/.conkypi_text.txt"
+directory = "/home/alexsson/Dropbox/ConkyPi/[Device]"
 -- ###Dont change code below###
 require 'cairo'
 assert(os.setlocale("en_US.utf8", "numeric"))
@@ -156,8 +159,8 @@ function draw_function(cr)
 			--Messages of the day
 				--Get text from file
 			cairo_new_path(cr)
-			conky_parse("${execi 1 fold -s -w50 " .. text_file .. " | sponge " .. text_file .. "}")
-			local f = assert(io.open(text_file, "rb"))
+			conky_parse("${execi 1 fold -s -w50 " .. text_file .. " | sponge " .. hidden_text_file .. "}")
+			local f = assert(io.open(hidden_text_file, "rb"))
 			local content = f:read("*all")
 			f:close()
 			lines = 0

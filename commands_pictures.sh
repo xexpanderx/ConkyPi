@@ -1,6 +1,6 @@
 #!/bin/bash
 set +e
-cd /home/alexsson/Dropbox/ConkyPi/Pictures/
+cd /home/alexsson/Dropbox/ConkyPi/[Device]/Pictures/
 not_empty_jpg=`find . -name "*.jpg"`
 if [ ! -z "$not_empty_jpg" ]
 then
