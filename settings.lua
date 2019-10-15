@@ -32,7 +32,6 @@ a['Monday'] = 'Måndag'
 a['Tuesday'] = "Tisdag"
 a['Wednesday'] = "Onsdag"
 a['Thursday'] = "Torsdag"
-
 a['Friday'] = "Fredag"
 a['Saturday'] = "Lördag"
 a['Sunday'] = "Söndag"
@@ -41,6 +40,7 @@ function hex2rgb(hex)
 	hex = hex:gsub("#","")
 	return (tonumber("0x"..hex:sub(1,2))/255), (tonumber("0x"..hex:sub(3,4))/255), tonumber(("0x"..hex:sub(5,6))/255)
 end
+
 r_background, g_background, b_background = hex2rgb(background_color)
 r_weather_background, g_weather_background, b_weather_background = hex2rgb(weather_background_color)
 r_clock_text, g_clock_text, b_clock_text = hex2rgb(clock_text_background)
@@ -80,6 +80,7 @@ function draw_function(cr)
 			cairo_rectangle(cr,w-200,0,200,h)
 			cairo_fill(cr)
 			cairo_close_path(cr)
+
   --Draw clock widget
 			--Draw clock
 			cairo_new_path(cr)
@@ -92,6 +93,7 @@ function draw_function(cr)
 			cairo_move_to(cr,350-ct_time.width/2,80)
 			cairo_show_text(cr,time)
 			cairo_close_path(cr)
+
 			--Draw date
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
@@ -101,6 +103,7 @@ function draw_function(cr)
 			cairo_move_to(cr,350-ct_date.width/2,80+ct_time.height)
 			cairo_show_text(cr,date)
 			cairo_close_path(cr)
+
 			--Draw namesday
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
@@ -108,21 +111,23 @@ function draw_function(cr)
 			namesday = conky_parse('${execi 60 w3m -dump http://www.namnsdag.nu | sed -n "6p"}')
 			ct_namesday = cairo_text_extents_t:create()
 			cairo_text_extents(cr,namesday,ct_namesday)
-			cairo_move_to(cr,350-ct_namesday.width/2,75+ct_time.height+ct_time.height)
+			cairo_move_to(cr,350-ct_namesday.width/2,75+ct_time.height*2)
 			cairo_show_text(cr,namesday)
 			cairo_close_path(cr)
+
 			--Draw lunch
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
 			cairo_select_font_face (cr, "Overpass", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
 			ct_lunch = cairo_text_extents_t:create()
 			cairo_text_extents(cr,"Lunch",ct_lunch)
-			cairo_move_to(cr,350-ct_lunch.width/2,75+ct_time.height+ct_time.height+ct_time.height)
+			cairo_move_to(cr,350-ct_lunch.width/2,75+ct_time.height*3)
 			cairo_show_text(cr,"Lunch")
-			cairo_move_to(cr,350-ct_lunch.width/2,75+ct_time.height+ct_time.height+ct_time.height+2)
+			cairo_move_to(cr,350-ct_lunch.width/2,75+ct_time.height*3+2)
 			cairo_rel_line_to (cr, ct_lunch.width+5, 0);
 			cairo_stroke(cr)
 			cairo_close_path(cr)
+
 			--Draw menu
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 18)
@@ -133,12 +138,13 @@ function draw_function(cr)
 				cairo_new_path(cr)
 				ct_menu = cairo_text_extents_t:create()
 				cairo_text_extents(cr,menu,ct_menu)
-				cairo_move_to(cr,350-ct_menu.width/2,75+ct_time.height+ct_time.height+ct_time.height+28*pos+6)
+				cairo_move_to(cr,350-ct_menu.width/2,75+ct_time.height*3+28*pos+6)
 				cairo_show_text(cr,menu)
 				cairo_close_path(cr)
 				pos = pos + 1
 			end
 			cairo_close_path(cr)
+
 	--Draw messages
 			--Pic of day
 				--Get image and show it
@@ -156,6 +162,7 @@ function draw_function(cr)
 			cairo_surface_destroy (image)
 			cairo_restore(cr)
 			cairo_close_path(cr)
+
 			--Messages of the day
 				--Get text from file
 			cairo_new_path(cr)
@@ -179,6 +186,7 @@ function draw_function(cr)
 				pos = pos+ct_message_of_day.height+10
 			end
 			cairo_close_path(cr)
+
 	--Draw weather
 			cairo_new_path(cr)
 			cairo_set_source_rgba(cr,r_weather_text, g_weather_text, b_weather_text,transparency_weather_text)
@@ -235,6 +243,7 @@ function draw_function(cr)
 				pos = pos + 270
 			end
 			cairo_close_path(cr)
+
 	--Draw system indicators
 			cairo_set_source_rgba(cr,r_circles,g_circles,b_circles,transparency_circle)
 			cairo_new_path(cr)
