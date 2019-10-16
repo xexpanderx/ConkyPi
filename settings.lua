@@ -4,18 +4,10 @@ api_key = "13aad301dd37412e01c6c3d4abe0b12e"
 city = "Uppsala"
 country_code = "SE"
 -- ###Device settings###
-device= "Andrei"
+device= "[Device]"
 -- ##Dark hour###
 dark_hour = 22
 -- ###Colors###
-current_hour = tonumber(conky_parse('${execi 60 date +%H}'))
-if current_hour >= dark_hour then
-	background_color = "#1D1D1D"
-	clock_text_background = "#FFFFFF"
-else
-	background_color = "#FFFFFF"
-	clock_text_background = "#2E2E2E"
-end
 weather_background_color = "#2E2E2E"
 weather_text_background = "#FFFFFF"
 temp_text = "#FFFFFF"
@@ -30,7 +22,7 @@ transparency_circle = 1.0
 --- ###Text file location
 text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/conkypi_text.txt"
 hidden_text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/.tmp/.conkypi_text.txt"
-directory = "/home/alexsson/Dropbox/ConkyPi/Andrei"
+directory = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/"
 -- ###Dont change code below###
 require 'cairo'
 assert(os.setlocale("en_US.utf8", "numeric"))
@@ -49,9 +41,7 @@ function hex2rgb(hex)
 	return (tonumber("0x"..hex:sub(1,2))/255), (tonumber("0x"..hex:sub(3,4))/255), tonumber(("0x"..hex:sub(5,6))/255)
 end
 
-r_background, g_background, b_background = hex2rgb(background_color)
 r_weather_background, g_weather_background, b_weather_background = hex2rgb(weather_background_color)
-r_clock_text, g_clock_text, b_clock_text = hex2rgb(clock_text_background)
 r_weather_text, g_weather_text, b_weather_text = hex2rgb(weather_text_background)
 r_temp_text, g_temp_text, b_temp_text = hex2rgb(temp_text)
 r_circles, g_circles, b_circles = hex2rgb(circles)
@@ -77,6 +67,17 @@ end
 
 function draw_function(cr)
 	local w,h=conky_window.width,conky_window.height
+	
+	current_hour = tonumber(conky_parse('${execi 60 date +%H}'))
+	if current_hour >= dark_hour then
+		background_color = "#1D1D1D"
+		clock_text_background = "#FFFFFF"
+	else
+		background_color = "#FFFFFF"
+		clock_text_background = "#2E2E2E"
+	end
+	r_background, g_background, b_background = hex2rgb(background_color)
+	r_clock_text, g_clock_text, b_clock_text = hex2rgb(clock_text_background)
 
   --Draw backgrounds
 			cairo_set_source_rgba(cr,r_background,g_background,b_background,transparency_background)
@@ -93,9 +94,9 @@ function draw_function(cr)
 			--Draw clock
 			cairo_new_path(cr)
 			cairo_set_source_rgba(cr,r_clock_text,g_clock_text,b_clock_text,transparency_clock_text)
-	  	cairo_set_font_size(cr, 78)
-  		cairo_select_font_face (cr, "Overpass", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
-  		time = conky_parse('${exec date +%R}')
+			cairo_set_font_size(cr, 78)
+			cairo_select_font_face (cr, "Overpass", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
+			time = conky_parse('${exec date +%R}')
 			ct_time = cairo_text_extents_t:create()
 			cairo_text_extents(cr,time,ct_time)
 			cairo_move_to(cr,350-ct_time.width/2,80)
