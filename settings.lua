@@ -4,11 +4,19 @@ api_key = "13aad301dd37412e01c6c3d4abe0b12e"
 city = "Uppsala"
 country_code = "SE"
 -- ###Device settings###
-device= "[Device]"
+device= "Andrei"
+-- ##Dark hour###
+dark_hour = 22
 -- ###Colors###
-background_color = "#FFFFFF"
+current_hour = tonumber(conky_parse('${execi 60 date +%H}'))
+if current_hour >= dark_hour then
+	background_color = "#1D1D1D"
+	clock_text_background = "#FFFFFF"
+else
+	background_color = "#FFFFFF"
+	clock_text_background = "#2E2E2E"
+end
 weather_background_color = "#2E2E2E"
-clock_text_background = "#2E2E2E"
 weather_text_background = "#FFFFFF"
 temp_text = "#FFFFFF"
 circles = "#2E2E2EF"
@@ -22,7 +30,7 @@ transparency_circle = 1.0
 --- ###Text file location
 text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/conkypi_text.txt"
 hidden_text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/.tmp/.conkypi_text.txt"
-directory = "/home/alexsson/Dropbox/ConkyPi/[Device]"
+directory = "/home/alexsson/Dropbox/ConkyPi/Andrei"
 -- ###Dont change code below###
 require 'cairo'
 assert(os.setlocale("en_US.utf8", "numeric"))
