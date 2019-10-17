@@ -24,26 +24,20 @@ def process (args):
     if args.three_hours_forecast:
         weather_details_now = owm.weather_at_place(args.city[0] + ',' + args.ccode[0])
         weather_values_now = weather_details_now.get_weather()
+        
+        if args.get_temp_c:
+            print(round(weather_values_now.get_temperature(unit='celsius')['temp']))
+        if args.get_weather_icon:
+            print('PNG/' + weather_values_now.get_weather_icon_name() + '.png')
 
         weather_details = owm.three_hours_forecast(args.city[0]+','+args.ccode[0])
         time_now = datetime.now(timezone.utc)
-        weather_values_3 = weater_in_future(weather_details, time_now+timedelta(hours=3),0)
-        weather_values_6 = weater_in_future(weather_details, time_now+timedelta(hours=6),0)
-        weather_values_9 = weater_in_future(weather_details, time_now+timedelta(hours=9),0)
-        weather_values_12 = weater_in_future(weather_details, time_now+timedelta(hours=12),0)
-
-        if args.get_temp_c:
-            print(round(weather_values_now.get_temperature(unit='celsius')['temp']))
-            print(round(weather_values_3.get_temperature(unit='celsius')['temp']))
-            print(round(weather_values_6.get_temperature(unit='celsius')['temp']))
-            print(round(weather_values_9.get_temperature(unit='celsius')['temp']))
-            print(round(weather_values_12.get_temperature(unit='celsius')['temp']))
-        if args.get_weather_icon:
-            print('PNG/'+weather_values_now.get_weather_icon_name()+'.png')
-            print('PNG/'+weather_values_3.get_weather_icon_name()+'.png')
-            print('PNG/'+weather_values_6.get_weather_icon_name()+'.png')
-            print('PNG/'+weather_values_9.get_weather_icon_name()+'.png')
-            print('PNG/'+weather_values_12.get_weather_icon_name()+'.png')
+        for i in range(3, 15, 3):
+            weather_values = weater_in_future(weather_details, time_now + timedelta(hours=i), 0)
+            if args.get_temp_c:
+                print(round(weather_values.get_temperature(unit='celsius')['temp']))
+            if args.get_weather_icon:
+                print('PNG/'+weather_values.get_weather_icon_name()+'.png')
 
     else:
         weather_details = owm.weather_at_place(args.city[0] + ',' + args.ccode[0])
