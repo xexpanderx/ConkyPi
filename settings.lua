@@ -5,8 +5,6 @@ city = "Uppsala"
 country_code = "SE"
 -- ###Device settings###
 device= "[Device]"
--- ##Dark hour###
-dark_hour = 22
 -- ###Colors###
 weather_background_color = "#2E2E2E"
 weather_text_background = "#FFFFFF"
@@ -67,14 +65,27 @@ end
 
 function draw_function(cr)
 	local w,h=conky_window.width,conky_window.height
-	
+
+	current_sunrise_hour = tonumber(conky_parse("${execi 60 ./openweather.py --api_key " .. api_key .. " --city " .. city .. " --ccode " .. country_code .. " --sunrise | awk \'{print $2}\' | awk -F: \'{print $1}\'}"))+2
+	current_sunrise_minute = tonumber(conky_parse("${execi 60 ./openweather.py --api_key " .. api_key .. " --city " .. city .. " --ccode " .. country_code .. " --sunrise | awk \'{print $2}\' | awk -F: \'{print $2}\'}"))
+	current_sunset_hour = tonumber(conky_parse("${execi 60 ./openweather.py --api_key " .. api_key .. " --city " .. city .. " --ccode " .. country_code .. " --sunset | awk \'{print $2}\' | awk -F: \'{print $1}\'}"))+2
+	current_sunset_minute = tonumber(conky_parse("${execi 60 ./openweather.py --api_key " .. api_key .. " --city " .. city .. " --ccode " .. country_code .. " --sunset | awk \'{print $2}\' | awk -F: \'{print $2}\'}"))
+
 	current_hour = tonumber(conky_parse('${execi 60 date +%H}'))
-	if current_hour >= dark_hour then
-		background_color = "#1D1D1D"
-		clock_text_background = "#FFFFFF"
-	else
+	current_minute = tonumber(conky_parse('${execi 60 date +%M}'))
+	current_time = current_hour*3600+current_minute*60
+	current_sunrise_time = current_sunrise_hour*3600+current_sunrise_minute*60
+	current_sunset_time = current_sunset_hour*3600+current_sunset_minute*60
+	print(current_time)
+	print(current_sunset_time)
+	print(current_sunrise_time)
+
+	if (current_hour*3600+current_minute*60) >= (current_sunrise_hour*3600+current_sunrise_minute*60) and (current_hour*3600+current_minute*60) <= (current_sunset_hour*3600+current_sunset_minute*60) then
 		background_color = "#FFFFFF"
 		clock_text_background = "#2E2E2E"
+	else
+		background_color = "#1D1D1D"
+		clock_text_background = "#FFFFFF"
 	end
 	r_background, g_background, b_background = hex2rgb(background_color)
 	r_clock_text, g_clock_text, b_clock_text = hex2rgb(clock_text_background)

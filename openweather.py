@@ -48,7 +48,10 @@ def process (args):
             print(weather_values.get_temperature(unit='fahrenheit')['temp'])
         if args.get_weather_icon:
             print('PNG/'+weather_values.get_weather_icon_name()+'.png')
-
+        if args.sunrise:
+            print(weather_values.get_sunrise_time('iso'))
+        if args.sunset:
+            print(weather_values.get_sunset_time('iso'))
 
 parser = argparse.ArgumentParser(description='Openweather script.')
 parser.add_argument('--api_key',help='OWM API key.',nargs=1,metavar=('[api_key]'), required=True)
@@ -58,6 +61,8 @@ parser.add_argument('--get_temp_c',help='Get temperature in Celsius.',action='st
 parser.add_argument('--get_temp_f',help='Get temperature in Fahrenheit.',action='store_true')
 parser.add_argument('--get_weather_icon',help='Get weekday.',action='store_true')
 parser.add_argument('--three_hours_forecast',help='Get three hours forecast.', action='store_true')
+parser.add_argument('--sunrise',help='Sunrise time.', action='store_true')
+parser.add_argument('--sunset',help='Sunset time.', action='store_true')
 args = parser.parse_args()
 
 process(args)
