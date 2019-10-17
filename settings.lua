@@ -76,9 +76,6 @@ function draw_function(cr)
 	current_time = current_hour*3600+current_minute*60
 	current_sunrise_time = current_sunrise_hour*3600+current_sunrise_minute*60
 	current_sunset_time = current_sunset_hour*3600+current_sunset_minute*60
-	print(current_time)
-	print(current_sunset_time)
-	print(current_sunrise_time)
 
 	if (current_hour*3600+current_minute*60) >= (current_sunrise_hour*3600+current_sunrise_minute*60) and (current_hour*3600+current_minute*60) <= (current_sunset_hour*3600+current_sunset_minute*60) then
 		background_color = "#FFFFFF"
