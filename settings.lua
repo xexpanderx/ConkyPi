@@ -87,7 +87,7 @@ function draw_function(cr)
 	r_background, g_background, b_background = hex2rgb(background_color)
 	r_clock_text, g_clock_text, b_clock_text = hex2rgb(clock_text_background)
 
-  --Draw backgrounds
+  -- ###Draw backgrounds
 			cairo_set_source_rgba(cr,r_background,g_background,b_background,transparency_background)
 			cairo_new_path(cr)
 			cairo_set_line_width(cr, 2)
@@ -98,7 +98,7 @@ function draw_function(cr)
 			cairo_fill(cr)
 			cairo_close_path(cr)
 
-  --Draw clock widget
+  -- ###Draw clock widget
 			--Draw clock
 			cairo_new_path(cr)
 			cairo_set_source_rgba(cr,r_clock_text,g_clock_text,b_clock_text,transparency_clock_text)
@@ -111,7 +111,7 @@ function draw_function(cr)
 			cairo_show_text(cr,time)
 			cairo_close_path(cr)
 
-			--Draw date
+			-- ###Draw date
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
 			date = conky_parse('${execi 60 date "+%A, %-e %B, Week %V"}')
@@ -121,7 +121,7 @@ function draw_function(cr)
 			cairo_show_text(cr,date)
 			cairo_close_path(cr)
 
-			--Draw namesday
+			-- ###Draw namesday
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
 			cairo_select_font_face (cr, "Z003", CAIRO_FONT_SLANT_ITALIC, CAIRO_FONT_WEIGHT_NORMAL)
@@ -132,7 +132,7 @@ function draw_function(cr)
 			cairo_show_text(cr,namesday)
 			cairo_close_path(cr)
 
-			--Draw lunch
+			-- ###Draw lunch
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 24)
 			cairo_select_font_face (cr, "Overpass", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL)
@@ -145,7 +145,7 @@ function draw_function(cr)
 			cairo_stroke(cr)
 			cairo_close_path(cr)
 
-			--Draw menu
+			-- ###Draw menu
 			cairo_new_path(cr)
 			cairo_set_font_size(cr, 18)
 			weekday = conky_parse('${execi 60 date +%A}')
@@ -162,11 +162,11 @@ function draw_function(cr)
 			end
 			cairo_close_path(cr)
 
-	--Draw messages
-			--Pic of day
-				--Get image and show it
+	-- ###Draw messages
+			-- ###Pic of day
+				-- ###Get image and show it
 			cairo_new_path(cr)
-      conky_parse("${execi 1800 " .. directory .. "/Pictures/.commands_pictures.sh }")
+			conky_parse("${execi 1800 " .. directory .. "/Pictures/.commands_pictures.sh }")
 			get_image = conky_parse("${execi 300 /usr/bin/ls " .. directory .. "/Pictures/.show_pics/* | shuf -n 1 | xargs -n1 basename}")
 			cairo_save(cr)
 			cairo_arc (cr, 350, 720, 240, 0, 6.28)
@@ -180,8 +180,8 @@ function draw_function(cr)
 			cairo_restore(cr)
 			cairo_close_path(cr)
 
-			--Messages of the day
-				--Get text from file
+			-- ###Messages of the day
+				-- ###Get text from file
 			cairo_new_path(cr)
 			conky_parse("${execi 1 fold -s -w50 " .. text_file .. " | sponge " .. hidden_text_file .. "}")
 			local f = assert(io.open(hidden_text_file, "rb"))
@@ -204,7 +204,7 @@ function draw_function(cr)
 			end
 			cairo_close_path(cr)
 
-	--Draw weather
+	-- ###Draw weather
 			cairo_new_path(cr)
 			cairo_set_source_rgba(cr,r_weather_text, g_weather_text, b_weather_text,transparency_weather_text)
 			cairo_set_font_size(cr, 24)
@@ -261,7 +261,7 @@ function draw_function(cr)
 			end
 			cairo_close_path(cr)
 
-	--Draw system indicators
+	-- ###Draw system indicators
 			cairo_set_source_rgba(cr,r_circles,g_circles,b_circles,transparency_circle)
 			cairo_new_path(cr)
 			cairo_arc(cr,350-30,h-30,20,0,6.28)
