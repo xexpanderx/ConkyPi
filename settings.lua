@@ -1,11 +1,11 @@
 
--- ###Openweather settings###
+-- ###Openweather settings
 api_key = "13aad301dd37412e01c6c3d4abe0b12e"
 city = "Uppsala"
 country_code = "SE"
--- ###Device settings###
+-- ###Device settings
 device= "[Device]"
--- ###Colors###
+-- ###Colors
 weather_background_color = "#2E2E2E"
 weather_text_background = "#FFFFFF"
 temp_text = "#FFFFFF"
@@ -21,7 +21,7 @@ transparency_circle = 1.0
 text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/conkypi_text.txt"
 hidden_text_file = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/.tmp/.conkypi_text.txt"
 directory = "/home/alexsson/Dropbox/ConkyPi/" .. device .. "/"
--- ###Dont change code below###
+-- ###Dont change code below
 require 'cairo'
 assert(os.setlocale("en_US.utf8", "numeric"))
 
