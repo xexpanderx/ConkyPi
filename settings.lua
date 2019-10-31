@@ -1,8 +1,8 @@
 
 -- ###Openweather settings
-api_key = "13aad301dd37412e01c6c3d4abe0b12e"
-city = "Uppsala"
-country_code = "SE"
+api_key = "[APIKEY]"
+city = "[CITYNAME]"
+country_code = "[COUNTRYCODE]"
 -- ###Device settings
 device= "[Device]"
 -- ###Colors
