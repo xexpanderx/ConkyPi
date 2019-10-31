@@ -25,6 +25,10 @@ Example:
 
 `sh install.sh MyPrivateConkyPi 13a3992someAPIkey2882 Stockholm SE`
 
+<b>Configuration</b>
+
+Place your images inside `~/Dropbox/ConkyPi/<NAMEYOURCONKY>/Pictures`
+
 <b>Start conky inside ~/.conky/ConkyPi</b>
 
 `sh start_conky.sh`
