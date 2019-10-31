@@ -23,7 +23,7 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertica
 
 Example:
 
-sh install.sh MyPrivateConkyPi 13a3992someAPIkey2882 Stockholm SE
+`sh install.sh MyPrivateConkyPi 13a3992someAPIkey2882 Stockholm SE`
 
 <b>Start conky inside ~/.conky/ConkyPi</b>
 
