@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-if [ "$1" != "" ]; then
+if [ "$1" != "" ] && [ "$2" != "" ] && [ "$3" != "" ] && [ "$4" != "" ]; then
 	mkdir -p ~/.conky/ConkyPi/
 	mkdir -p ~/Dropbox/ConkyPi/$1/.tmp
 	mkdir -p ~/Dropbox/ConkyPi/$1/Pictures/.show_pics
@@ -10,7 +10,7 @@ if [ "$1" != "" ]; then
 	cat commands_pictures.sh |  sed "s/\[Device]/$1/g" | sponge ~/Dropbox/ConkyPi/$1/Pictures/.commands_pictures.sh
 	cp conky_config ~/.conky/ConkyPi/
 	cp openweather.py ~/.conky/ConkyPi/
-	cat settings.lua | sed "s/\[Device]/$1/g" | sponge ~/.conky/ConkyPi/settings.lua
+	cat settings.lua | sed "s/\[Device]/$1/g" | sed "s/\[APIKEY]/$2/g" | sed "s/\[CITYNAME]/$3/g" | sed "s/\[COUNTRYCODE]/$4/g" | sponge ~/.conky/ConkyPi/settings.lua
 	cat start_conky.sh | sed "s/\[Device]/$1/g" | sponge ~/.conky/ConkyPi/start_conky.sh
 	chmod +x ~/.conky/ConkyPi/start_conky.sh
 	chmod +x ~/.conky/ConkyPi/openweather.py
