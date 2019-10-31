@@ -3,7 +3,7 @@
 
 ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertical)
 
-<b>Requirements</b>
+<b>Requirements and assumptions</b>
 
 - Overpass font (https://overpassfont.org/)
 - pyowm (https://github.com/csparpa/pyowm)
@@ -12,6 +12,8 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertica
 - Monitor with 1440x900 resolution used <b> vertically </b>
 - moreutils (https://joeyh.name/code/moreutils/)
 - Dropbox (https://dropbox.com)
+
+- Your Dropbox folder is located at `~/Dropbox`
 
 <b>Install</b>
 
