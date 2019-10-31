@@ -16,5 +16,5 @@ if [ "$1" != "" ] && [ "$2" != "" ] && [ "$3" != "" ] && [ "$4" != "" ]; then
 	chmod +x ~/.conky/ConkyPi/openweather.py
 	chmod +x ~/Dropbox/ConkyPi/$1/Pictures/.commands_pictures.sh
 else
-	echo "Please give your device a name!"
+	echo "Please check your inputs!"
 fi
