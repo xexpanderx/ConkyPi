@@ -14,15 +14,7 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertica
 
 <b>Install</b>
 
-`sh install.sh`
-
-<b>Configuration</b>
-
-Edit following variables in "settings.lua":
-
-- api_key
-- city
-- country_code
+`sh install.sh <NAMEYOURCONKY> <API-KEY> <YOURCITY> <COUNTRY_CODE>`
 
 <b>Start conky inside ~/.conky/ConkyPi</b>
 
