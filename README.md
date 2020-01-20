@@ -11,6 +11,7 @@ ConkyPi for Raspberry Pi4 and external monitor with 900x1440 resolution (vertica
 - openweather api-key and membership (https://openweathermap.org/)
 - Monitor with 1440x900 resolution used <b> vertically </b>
 - moreutils (https://joeyh.name/code/moreutils/)
+- urw-base35-fonts (https://github.com/ArtifexSoftware/urw-base35-fonts) 
 
 
 - Dropbox (https://dropbox.com)
