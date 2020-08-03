@@ -30,7 +30,7 @@ Example:
 
 Place your images inside `~/Dropbox/ConkyPi/<NAMEYOURCONKY>/Pictures`
 
-<b>Change lines inside settings.lua where appropriate. Some lines are still hardcoded.</b>
+<b>*** Change lines inside settings.lua where appropriate. Some lines are still hardcoded. ***</b>
 
 <b>Start conky inside ~/.conky/ConkyPi</b>
 
